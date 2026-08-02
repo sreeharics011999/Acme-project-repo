@@ -15,6 +15,7 @@ export const colors = {
     yellowLight:"rgb(250, 249, 236)",
     blue:"#009efa",
     blueLight:"#ecf7fa",
+    transparent:"#0000004d"
 }
 
 export const WIDTH = Dimensions.get("window").width

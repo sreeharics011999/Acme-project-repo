@@ -12,11 +12,14 @@ const item = {
   "email": "john@example.com"
 }
 
-const UserdetailScreen = () => {
+const UserdetailScreen = ({navigation,route}) => {
+  const data=route?.params?.item
+  console.log('data--->',data);
+  
   const profileJson = useMemo(() => [
-    { label: "First name", icon: firstName, data: item?.firstName },
-    { label: "Last name", icon: profileIcon, data: item?.lastName },
-    { label: "Email", icon: mailicon, data: item?.email },
+    { label: "First name", icon: firstName, data: data?.firstName },
+    { label: "Last name", icon: profileIcon, data: data?.lastName },
+    { label: "Email", icon: mailicon, data: data?.email },
     { label: "Support Url", icon: linkIcon, data: 'https://picsum.photos/400/40' },
   ], [item])
 
@@ -36,8 +39,8 @@ const UserdetailScreen = () => {
         <View style={{ width: WIDTH * 0.33, height: WIDTH * 0.33, alignItems: "center", justifyContent: "center", borderRadius: 100, borderWidth: 5, borderColor: colors.white, backgroundColor: colors.grey, marginRight: WIDTH * 0.03 }}>
           <Image source={UserImage} style={{ width: WIDTH * 0.3, height: WIDTH * 0.3, borderRadius: 100 }} resizeMode="contain" />
         </View>
-        <AppText style={{ fontSize: RFValue(20), fontWeight: '900', marginTop: HEIGHT * 0.01 }}>{item?.firstName} {item?.lastName}</AppText>
-        <AppText style={{ fontSize: RFValue(14), fontWeight: '500', color: colors.primary, marginTop: HEIGHT * 0.01 }}>{item?.email}</AppText>
+        <AppText style={{ fontSize: RFValue(20), fontWeight: '900', marginTop: HEIGHT * 0.01 }}>{data?.firstName} {data?.lastName}</AppText>
+        <AppText style={{ fontSize: RFValue(14), fontWeight: '500', color: colors.primary, marginTop: HEIGHT * 0.01 }}>{data?.email}</AppText>
       </View>
       <View style={{ marginHorizontal: WIDTH * 0.05, paddingHorizontal: WIDTH * 0.03, borderWidth: 1, borderRadius: 10, marginTop: HEIGHT * 0.07, borderColor: colors.grey }}>
         <AppText style={{ fontSize: RFValue(14), fontWeight: '900', marginTop: HEIGHT * 0.01, marginBottom: HEIGHT * 0.02 }}>User Information</AppText>
